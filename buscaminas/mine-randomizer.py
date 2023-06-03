@@ -1,21 +1,24 @@
 # Package import
 import random
 
-
-mine_spawn = ([0, 1, 0], [0, 1, 1], [0, 0, 1]) # Saves mine spawn (static)
+columns = 3
+map_row = [[]]*columns # Saves mine spawn (static)
 difficulty = 1  # Set default difficulty to 1
 
 
-def getMineSpawn(difficulty):
+def get_mine_cap(difficulty):
     spawn_limit = difficulty * 20 + random.randint(1,10)
     return spawn_limit
 
-def iteration(mine_spawn):
-    for spawn_list in mine_spawn:
-        for spawn_point in spawn_list:
-            print(spawn_point)
-        print()
+def mine_mapping(map_row):
+    global columns
+    for i in range(int(len(map_row)/columns)):
+        for inner_list in range(len(map_row)):
+            map_row[inner_list].append(1)
+        print(map_row)
 
+for i in range(columns):
+    print(mine_mapping(map_row))
 
-print(iteration(mine_spawn))
-print(getMineSpawn(1))
+# map_row[0].append(1)
+# print(map_row)
